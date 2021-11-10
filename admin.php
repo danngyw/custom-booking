@@ -58,7 +58,11 @@ function html_list_booking(){
 <p class="search-box">
   <label class="screen-reader-text" for="post-search-input">Search Posts:</label>
   <input type="search" id="post-search-input" name="s" value="">
-    <input type="submit" id="search-submit" class="button" value="Search Posts"></p>
+    <input type="submit" id="search-submit" class="button" value="Search Posts">
+    <br />
+  </p>
+  <p style="margin-bottom: 15px; display: inline-block;"> &nbsp; </p>
+
    <table class="wp-list-table widefat fixed striped table-view-list posts">
   <thead>
   <tr>
