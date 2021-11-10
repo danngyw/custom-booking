@@ -1,0 +1,17 @@
+
+Back-end:
+Tạo mới 1 room, thêm loại phòng và mức giá theo taxonomy.
+Thêm mới custom fields 'price' để thêm giá.
+
+Fron-end.
+
+Copy file: single-room.php bỏ vào theme( wp-content/themes/curren-theme/ folder).
+
+Tạo page mới và sử dụng shortcode: booking_room để list tất cả room;
+
+Tạo mới page và sử dụng shortcode: booking_form trong phần content để tạo form booking.
+
+Quản lý booking:
+Danh sach booking: http://domain.com/wp-admin/admin.php?page=booking-room
+
+Note: nếu có lỗi gì thì thử activate lại plugin.
