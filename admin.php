@@ -1,5 +1,16 @@
 <?php
-
+function delete_booking_record($id){
+    global $wpdb;                           // WPDB class object
+    $tbl_book  = $wpdb->prefix . 'book_room';
+    $check =  $wpdb->delete(
+        $tbl_book,          // table name with dynamic prefix
+        ['id' => $id],                       // which id need to delete
+        ['%d'],                             // make sure the id format
+    );
+    if($check){
+        echo '<p> A booking has been deleted.</p>';
+    }
+}
 add_action('admin_menu', 'custom_menu');
 function custom_menu() {
 
@@ -37,7 +48,13 @@ function booking_row_html($booking){?>
   <div class="hh">10</div>
   <div class="mn">08</div>
   <div class="ss">43</div>
-  <div class="post_password"></div><div class="page_template">default</div><div class="post_category" id="rate_8">6</div><div class="tags_input" id="room_range_8"></div><div class="sticky"></div></div><div class="row-actions"><span class="edit"><a href="http://localhost/wp/wp-admin/post.php?post=8&amp;action=edit" aria-label="Edit “Phòng đơn”">Edit</a> | </span><span class="inline hide-if-no-js"><button type="button" class="button-link editinline" aria-label="Quick edit “Phòng đơn” inline" aria-expanded="false">Quick&nbsp;Edit</button> | </span><span class="trash"><a href="http://localhost/wp/wp-admin/post.php?post=8&amp;action=trash&amp;_wpnonce=3d6b1c689e" class="submitdelete" aria-label="Move “Phòng đơn” to the Trash">Trash</a> | </span><span class="view"><a href="http://localhost/wp/room/phong-don/" rel="bookmark" aria-label="View “Phòng đơn”">View</a></span></div><button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
+  <?php
+  $string = "?page=booking-room&action=delete&id={$booking->id}";
+  $trash_url = admin_url($string);
+  ?>
+  <div class="post_password"></div><div class="page_template">default</div>
+  <div class="post_category" id="rate_8">6</div><div class="tags_input" id="room_range_8"></div><div class="sticky"></div></div><div class="row-actions"><span class="edit"><a href="http://localhost/wp/wp-admin/post.php?post=8&amp;action=edit" aria-label="Edit “Phòng đơn”">Edit</a> | </span><span class="inline hide-if-no-js"><button type="button" class="button-link editinline" aria-label="Quick edit “Phòng đơn” inline" aria-expanded="false">Quick&nbsp;Edit</button> | </span>
+    <span class="trash"><a href="<?php echo $trash_url;?>" class="submitdelete" onclick="return confirm_delete()" aria-label="Move “Phòng đơn” to the Trash">Delete</a> | </span><span class="view"><a href="http://localhost/wp/room/phong-don/" rel="bookmark" aria-label="View “Phòng đơn”">View</a></span></div><button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
 
 
   <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
@@ -50,7 +67,16 @@ function html_list_booking(){
     global $wpdb;
     $tbl_booking   = $wpdb->prefix . 'book_room';
 
-    $order = isset($_GET['order']) ? strtoupper($_GET['order']) : 'DESC';
+    $order      = isset($_GET['order']) ? strtoupper($_GET['order']) : 'DESC';
+    $action     = isset($_GET['action']) ? $_GET['action'] : '';
+    $id         = isset($_GET['id']) ? strtoupper($_GET['id']) : 0;
+    $admin_url = admin_url('?page=booking-room');
+
+    if( $action == 'delete' && $id > 0){
+        delete_booking_record($id);
+    }
+
+
     if($order == 'DESC'){
       $order_url = admin_url('?page=booking-room&orderby=date&order=asc');
     } else{
@@ -63,6 +89,11 @@ function html_list_booking(){
     echo '<div class="wrap">';
 
     ?>
+    <script type="text/javascript">
+    function confirm_delete() {
+      return confirm('are you sure?');
+    }
+    </script>
 
     <h1 class="wp-heading-inline">List Booking</h1>
     <form id="posts-filter" method="get">
@@ -114,5 +145,12 @@ function html_list_booking(){
 
 </form>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $(".submitdelete").click(function(){
+      alert('111');
+    });
+  })
+</script>
 <?php
 }
