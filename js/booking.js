@@ -6,6 +6,7 @@
         }, "Please specify a valid phone number");
 
         $(".booking-form").validate({
+            debug: true,
             rules: {
                 "fullname": {
                     required: true,
@@ -23,7 +24,7 @@
                 // }
             },
             submitHandler: function(form) {
-
+                console.log('submitHandler');
             },
             onkeyup: function( element, event ) {
 
