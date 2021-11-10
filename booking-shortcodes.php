@@ -67,7 +67,7 @@ function shortcode_booking_form(){
      ob_start(); ?>
     <form class="booking-form">
         <div class="form-group">
-            <label >Name</label>
+            <label>Name</label>
             <input type="text" name="fullname" required class="form-control"  placeholder="Name">
         </div>
         <div class="form-group">
