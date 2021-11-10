@@ -60,7 +60,18 @@ function booking_row_html($booking){?>
   <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
   <td class="taxonomy-room_range column-taxonomy-room_range" data-colname="Range"><?php echo $booking->email;?></td>
   <td class="date column-date" data-colname="Date">
-    <?php $time = strtotime($booking->date_booking); if($time>1) { echo 'Booked:<br>'; echo date("Y/m/d H:i a", strtotime($booking->date_booking)); };?> </td>    </tr>
+    <?php
+    $time = strtotime($booking->local_time);
+    if( $time>1 ) {
+        // echo 'Booked:<br>';
+        // //echo $booking->date_booking;
+        // echo date_i18n('Y/m/d h:i',$time , $gmt = true);
+        //echo get_the_date('Y/m/d', $time);
+        echo 'Booked:<br>'; echo date("Y/m/d H:i a", strtotime($booking->local_time));
+    };
+        ?>
+
+         </td>    </tr>
   <?php }
 function html_list_booking(){
 

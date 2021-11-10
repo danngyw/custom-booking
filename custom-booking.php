@@ -36,7 +36,8 @@ Class CustomBooking{
 			'full_name' 	=> $fullname,
 			'email' 		=> $email,
 			'phone' 		=> $phone,
-			'date_booking' => current_time( 'mysql' ),
+			'gmt_time' 		=> current_time( 'mysql', 1 ),
+			'local_time' 	=> current_time('mysql', 0),
 		);
 
 		$insert = $wpdb->insert( $tbl_book, $in_args );
@@ -126,7 +127,9 @@ Class CustomBooking{
 
 	    register_taxonomy( 'room_range', 'room', $args );
 	}
-	function add_custom_css(){?>
+	function add_custom_css(){
+
+		?>
 		<style type="text/css">
 			.col-md-3{
 				width: 33.33%;
@@ -186,8 +189,8 @@ function custom_booking_create_table() {
 		phone mediumint(9) NOT NULL ,
 		full_name varchar(55) NOT NULL ,
 		email varchar(55) NOT NULL ,
-		date_booking datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-
+		gmt_time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+		local_time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
 		PRIMARY KEY  (id)
 	) $charset_collate;";
 	dbDelta( $sql );
@@ -197,3 +200,5 @@ function custom_booking_install(){
 	custom_booking_create_table();
 }
 register_activation_hook( __FILE__, 'custom_booking_install', 15 );
+
+?>
