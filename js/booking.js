@@ -14,7 +14,8 @@
                 "phone": {
                     required: true,
                     phoneUS: true,
-                    maxlength:14
+                    maxlength:14,
+                    minlength:5
                 },
                 "re-password": {
                     equalTo: "#password",
@@ -84,7 +85,7 @@
                 } else {
                     console.log('unvalid');
                     //$('button.submit').attr('class', 'submit btn btn-danger disabled');   // disables button
-                    $('.button-submitn.submit').addClass('disabled');
+                    $('.button-submit').addClass('disabled');
                     $('.button-submit').attr('disabled');
                 }
             },
