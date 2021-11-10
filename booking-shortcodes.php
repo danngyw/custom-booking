@@ -64,28 +64,26 @@ function shortcode_booking_room($atts){
 }
 add_shortcode( 'booking_room', 'shortcode_booking_room' );
 function shortcode_booking_form(){
-     ob_start();
-
-    ?>
+     ob_start(); ?>
     <form class="booking-form">
         <div class="form-group">
             <label >Name</label>
             <input type="text" name="fullname" required class="form-control"  placeholder="Name">
         </div>
-      <div class="form-group">
-        <label >Email</label>
-        <input type="email" name="email" required class="form-control"  placeholder="Your email">
-      </div>
-      <div class="form-group">
+        <div class="form-group">
+            <label >Email</label>
+            <input type="email" name="email" required class="form-control"  placeholder="Your email">
+        </div>
+        <div class="form-group">
             <label >Phone number</label>
             <input type="text" name="phone" required class="form-control"  placeholder="Phone number">
         </div>
 
-      <div class="form-group">
-
-        <button type="submit" class="form-control"placeholder="Sendt">Send</button>
-      </div>
-    </form><?php
+        <div class="form-group">
+        <button type="submit" class="form-control disable"placeholder="Sendt">Send</button>
+        </div>
+    </form>
+    <?php
     return ob_get_clean();
 }
 
