@@ -29,8 +29,6 @@ Class CustomBooking{
 		$fullname 	= $request['fullname'];
 		$email 		= $request['email'];
 		$phone 		= $request['phone'];
-		var_dump($phone);
-		die();
 
 		global $wpdb;
 		$tbl_book 	= $wpdb->prefix . 'book_room';

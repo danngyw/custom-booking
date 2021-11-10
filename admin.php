@@ -39,7 +39,7 @@ function booking_row_html($booking){?>
 <div class="hidden" id="inline_8">
   <div class="post_title"><?php echo $booking->full_name;?></div><div class="post_name">phong-don</div>
   <?php
- 
+
   $string = "?page=booking-room&action=delete&id={$booking->id}";
   $trash_url = admin_url($string);
   ?>
@@ -48,7 +48,7 @@ function booking_row_html($booking){?>
     <span class="trash"><a href="<?php echo $trash_url;?>" class="submitdelete" onclick="return confirm_delete()" aria-label="Move “Phòng đơn” to the Trash">Delete</a> | </span><span class="view"><a href="http://localhost/wp/room/phong-don/" rel="bookmark" aria-label="View “Phòng đơn”">View</a></span></div><button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
 
 
-  <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php var_dump($booking); echo $booking->phone;?> </td>
+  <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
   <td class="taxonomy-room_range column-taxonomy-room_range" data-colname="Range"><?php echo $booking->email;?></td>
   <td class="date column-date" data-colname="Date">
     <?php
