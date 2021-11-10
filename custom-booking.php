@@ -183,7 +183,9 @@ Class CustomBooking{
 			    color: #fff;
 			    font-weight: 450;
 			    font-size: 15px;
+			    border: 1px solid green;
 			}
+
 		</style>
 	<?php }
 

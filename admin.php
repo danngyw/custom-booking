@@ -33,8 +33,10 @@ function booking_row_html($booking){?>
         <span class="screen-reader-text">
         “Phòng đơn” is locked       </span>
       </div>
-      </th><td class="title column-title has-row-actions column-primary page-title" data-colname="Title"><div class="locked-info"><span class="locked-avatar"></span> <span class="locked-text"></span></div>
-<strong><a class="row-title" href="http://localhost/wp/wp-admin/post.php?post=8&amp;action=edit" aria-label="“Phòng đơn” (Edit)"><?php echo $booking->full_name;?></a></strong>
+      </th>
+      <td class="title column-title has-row-actions column-primary page-title" data-colname="Title">
+        <div class="locked-info"><span class="locked-avatar"></span> <span class="locked-text"></span></div>
+        <strong><a class="row-title" href="#" ><?php echo $booking->full_name;?></a></strong>
 
 <div class="hidden" id="inline_8">
   <div class="post_title"><?php echo $booking->full_name;?></div><div class="post_name">phong-don</div>
@@ -45,11 +47,8 @@ function booking_row_html($booking){?>
   ?>
   <div class="post_password"></div><div class="page_template">default</div>
   <div class="tags_input" id="room_range_8"></div><div class="sticky"></div></div><div class="row-actions"><span class="edit"><a href="#" aria-label="Edit “Phòng đơn”">Edit</a> | </span><span class="inline hide-if-no-js">| </span>
-    <span class="trash"><a href="<?php echo $trash_url;?>" class="submitdelete" onclick="return confirm_delete()" aria-label="Move “Phòng đơn” to the Trash">Delete</a> | </span>
-    <span class="view"><a href="#" rel="bookmark" aria-label="View “Phòng đơn”">View</a></span></div>
-    <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
-
-
+    <span class="trash"><a href="<?php echo $trash_url;?>" class="submitdelete" onclick="return confirm_delete()" >Delete</a> | </span>
+    <span class="view"><a href="#" rel="bookmark" aria-label="View ">View</a></span></div>
   <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
   <td class="taxonomy-room_range column-taxonomy-room_range" data-colname="Range"><?php echo $booking->email;?></td>
   <td class="date column-date" data-colname="Date">
@@ -121,7 +120,7 @@ function html_list_booking(){
             foreach($results as $booking){
               booking_row_html($booking);
             }
-        } else{
+        } else {
             echo('<tr><td colspan="4"><h3>No booking found.</h3></td></tr>');
         }
         table_booking_footer($order_url);
