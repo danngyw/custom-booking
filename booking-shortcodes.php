@@ -89,3 +89,10 @@ function shortcode_booking_form(){
 }
 
 add_shortcode( 'booking_form', 'shortcode_booking_form' );
+$date =  current_time( 'mysql' );
+$date=date_create("2013-03-15");
+
+echo date_format($date,"Y/m/d at H:i a");
+echo '11 <br />';
+echo date_format($date,"Y/m/d H:i:s");
+//2021/11/09 at 10:08 am<

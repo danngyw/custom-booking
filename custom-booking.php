@@ -36,7 +36,7 @@ Class CustomBooking{
 			'full_name' 	=> $fullname,
 			'email' 		=> $email,
 			'phone' 		=> $phone,
-
+			'date_booking' => current_time( 'mysql' ),
 		);
 
 		$insert = $wpdb->insert( $tbl_book, $in_args );
@@ -186,6 +186,8 @@ function custom_booking_create_table() {
 		phone mediumint(9) NOT NULL ,
 		full_name varchar(55) NOT NULL ,
 		email varchar(55) NOT NULL ,
+		date_booking datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
+
 		PRIMARY KEY  (id)
 	) $charset_collate;";
 	dbDelta( $sql );

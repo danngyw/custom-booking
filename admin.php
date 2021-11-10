@@ -42,13 +42,14 @@ function booking_row_html($booking){?>
 
   <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
   <td class="taxonomy-room_range column-taxonomy-room_range" data-colname="Range"><?php echo $booking->email;?></td>
-  <td class="date column-date" data-colname="Date">Booked:<br>2021/11/09 at 10:08 am</td>    </tr>
+  <td class="date column-date" data-colname="Date">
+    <?php $time = strtotime($booking->date_booking); if($time>1) { echo 'Booked:<br>'; echo date("Y/m/d H:i a", strtotime($booking->date_booking)); };?> </td>    </tr>
   <?php }
 function html_list_booking(){
 
     global $wpdb;
     $tbl_booking   = $wpdb->prefix . 'book_room';
-    $book = $sql = "SELECT * FROM $tbl_booking";
+    $book = $sql = "SELECT * FROM $tbl_booking ORDER BY  id DESC";
     $results = $wpdb->get_results($sql);
     echo '<div class="wrap">';
 
