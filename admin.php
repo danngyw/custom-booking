@@ -40,9 +40,7 @@ function booking_row_html($booking){?>
   <div class="post_password"></div><div class="page_template">default</div><div class="post_category" id="rate_8">6</div><div class="tags_input" id="room_range_8"></div><div class="sticky"></div></div><div class="row-actions"><span class="edit"><a href="http://localhost/wp/wp-admin/post.php?post=8&amp;action=edit" aria-label="Edit “Phòng đơn”">Edit</a> | </span><span class="inline hide-if-no-js"><button type="button" class="button-link editinline" aria-label="Quick edit “Phòng đơn” inline" aria-expanded="false">Quick&nbsp;Edit</button> | </span><span class="trash"><a href="http://localhost/wp/wp-admin/post.php?post=8&amp;action=trash&amp;_wpnonce=3d6b1c689e" class="submitdelete" aria-label="Move “Phòng đơn” to the Trash">Trash</a> | </span><span class="view"><a href="http://localhost/wp/room/phong-don/" rel="bookmark" aria-label="View “Phòng đơn”">View</a></span></div><button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
 
 
-  <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><a href="edit.php?post_type=room&amp;rate=5">
-    <?php echo $booking->phone;?>
-  </a></td>
+  <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
   <td class="taxonomy-room_range column-taxonomy-room_range" data-colname="Range"><?php echo $booking->email;?></td>
   <td class="date column-date" data-colname="Date">Booked:<br>2021/11/09 at 10:08 am</td>    </tr>
   <?php }
