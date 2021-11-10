@@ -40,7 +40,7 @@ Class CustomBooking{
 		);
 
 		$insert = $wpdb->insert( $tbl_book, $in_args );
-		$msg = 'Your booking has been sent';
+		$msg = 'Your booking has been sent. Thank you.';
 		if(! $insert){
 			$msg = 'There are something wrong.';
 		}
