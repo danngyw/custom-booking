@@ -44,8 +44,10 @@ function booking_row_html($booking){?>
   $trash_url = admin_url($string);
   ?>
   <div class="post_password"></div><div class="page_template">default</div>
-  <div class="post_category" id="rate_8">6</div><div class="tags_input" id="room_range_8"></div><div class="sticky"></div></div><div class="row-actions"><span class="edit"><a href="http://localhost/wp/wp-admin/post.php?post=8&amp;action=edit" aria-label="Edit “Phòng đơn”">Edit</a> | </span><span class="inline hide-if-no-js"><button type="button" class="button-link editinline" aria-label="Quick edit “Phòng đơn” inline" aria-expanded="false">Quick&nbsp;Edit</button> | </span>
-    <span class="trash"><a href="<?php echo $trash_url;?>" class="submitdelete" onclick="return confirm_delete()" aria-label="Move “Phòng đơn” to the Trash">Delete</a> | </span><span class="view"><a href="http://localhost/wp/room/phong-don/" rel="bookmark" aria-label="View “Phòng đơn”">View</a></span></div><button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
+  <div class="tags_input" id="room_range_8"></div><div class="sticky"></div></div><div class="row-actions"><span class="edit"><a href="#" aria-label="Edit “Phòng đơn”">Edit</a> | </span><span class="inline hide-if-no-js">| </span>
+    <span class="trash"><a href="<?php echo $trash_url;?>" class="submitdelete" onclick="return confirm_delete()" aria-label="Move “Phòng đơn” to the Trash">Delete</a> | </span>
+    <span class="view"><a href="#" rel="bookmark" aria-label="View “Phòng đơn”">View</a></span></div>
+    <button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
 
 
   <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
