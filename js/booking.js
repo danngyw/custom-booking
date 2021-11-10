@@ -73,10 +73,13 @@
             }
         });
         $(".booking-form").submit(function(event){
-
+            console.log('submit event');
             event.preventDefault();
             var form    = $(event.currentTarget);
             if(! form.valid()){
+                console.log('check submit fail');
+                form.attr('disabled', 'disabled');
+                form.find(".btn-submit").attr('disabled','disabled');
                 return false;
             }
             var send    = {};
@@ -95,7 +98,6 @@
                 beforeSend  : function(event){
                     form.attr('disabled', 'disabled');
                     form.find(".btn-submit").attr('disabled','disabled');
-                    //$(".btn-submit").
                     form.find(".btn-submit").addClass("loading");
                 },
                 success : function(res){
