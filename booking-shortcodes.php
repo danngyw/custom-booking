@@ -63,6 +63,7 @@ function shortcode_booking_room($atts){
     return ob_get_clean();
 }
 add_shortcode( 'booking_room', 'shortcode_booking_room' );
+
 function shortcode_booking_form(){
      ob_start(); ?>
     <form class="booking-form">
@@ -80,7 +81,7 @@ function shortcode_booking_form(){
         </div>
 
         <div class="form-group">
-        <button type="submit" class="form-control disable"placeholder="Sendt">Send</button>
+        <button type="submit" class="button-submit form-control disabled"placeholder="Sendt" disabled>Send</button>
         </div>
     </form>
     <?php

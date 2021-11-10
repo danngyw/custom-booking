@@ -50,10 +50,11 @@ Class CustomBooking{
 	}
 	function enqueue_script(){
 		wp_enqueue_script('jquery');
-		 wp_enqueue_script(
+		wp_enqueue_script('validate','https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js', array('jquery'), rand(), true);
+		wp_enqueue_script(
         'booking',
         	plugin_dir_url( __FILE__ ) . '/js/booking.js',
-	        array('jquery'),
+	        array('jquery','validate'),
 	        rand(),
 	        true
 	    );
@@ -64,6 +65,7 @@ Class CustomBooking{
 		var booking = {ajax_url:'<?php echo admin_url().'admin-ajax.php'; ?>'};
 	</script>
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js" integrity="sha512-37T7leoNS06R80c8Ulq7cdCDU5MNQBwlYoy1TX/WUsLFC2eYNqtKlV0QjH7r8JpG/S0GUMZwebnVFLPd6SU5yg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 		<?php
 
 	}
@@ -161,6 +163,10 @@ Class CustomBooking{
 			.single-room img{
 				border-radius: 5px;
 				margin: 10px 0 15px 0;
+			}
+			.booking-form button.disabled{
+				background-color: #ccc !important;
+
 			}
 		</style>
 	<?php }
