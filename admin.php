@@ -49,8 +49,17 @@ function html_list_booking(){
 
     global $wpdb;
     $tbl_booking   = $wpdb->prefix . 'book_room';
-    $book = $sql = "SELECT * FROM $tbl_booking ORDER BY  id DESC";
+
+    $order = isset($_GET['order']) ? strtoupper($_GET['order']) : 'DESC';
+    if($order == 'DESC'){
+      $order_url = admin_url('?page=booking-room&orderby=date&order=asc');
+    } else{
+      $order = 'ASC';
+      $order_url = admin_url('?page=booking-room&orderby=date&order=desc');
+    }
+    $sql = "SELECT * FROM $tbl_booking ORDER BY  id {$order}";
     $results = $wpdb->get_results($sql);
+
     echo '<div class="wrap">';
 
     ?>
@@ -58,7 +67,7 @@ function html_list_booking(){
     <h1 class="wp-heading-inline">List Booking</h1>
     <form id="posts-filter" method="get">
 
-<p class="search-box">
+  <p class="search-box">
   <label class="screen-reader-text" for="post-search-input">Search :</label>
   <input type="search" id="post-search-input" name="s" value="">
     <input type="submit" id="search-submit" class="button" value="Search Posts">
@@ -75,7 +84,7 @@ function html_list_booking(){
     </th>
 
     <th scope="col" id="taxonomy-rate" class="manage-column column-taxonomy-rate">Phone</th>
-    <th scope="col" id="taxonomy-room_range" class="manage-column column-taxonomy-room_range">Email</th><th scope="col" id="date" class="manage-column column-date sortable asc"><a href="#wp-admin/edit.php?post_type=room&amp;orderby=date&amp;order=desc"><span>Date</span><span class="sorting-indicator"></span></a></th>
+    <th scope="col" id="taxonomy-room_range" class="manage-column column-taxonomy-room_range">Email</th><th scope="col" id="date" class="manage-column column-date sortable asc"><a href="<?php echo $order_url;?>"><span>Date</span><span class="sorting-indicator"></span></a></th>
   </tr>
   </thead>
 
