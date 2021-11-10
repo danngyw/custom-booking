@@ -81,7 +81,7 @@ function shortcode_booking_form(){
         </div>
 
         <div class="form-group">
-        <button type="submit" class="button-submit form-control"placeholder="Send">Send</button>
+        <button type="submit" class="button-submit form-control"placeholder="Send"> SEND </button>
         </div>
     </form>
     <?php

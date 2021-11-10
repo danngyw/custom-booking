@@ -52,8 +52,7 @@ Class CustomBooking{
 	function enqueue_script(){
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('validate','https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js', array('jquery'), rand(), true);
-		wp_enqueue_script(
-        'booking',
+		wp_enqueue_script( 'booking',
         	plugin_dir_url( __FILE__ ) . '/js/booking.js',
 	        array('jquery','validate'),
 	        rand(),
@@ -169,7 +168,21 @@ Class CustomBooking{
 			}
 			.booking-form button.disabled{
 				background-color: #ccc !important;
-
+			}
+			.form-group label.error{
+				font-size: 13px;
+				color: #db8317;
+			}
+			.booking-form input{
+				border: 1px solid #ccc;
+				border-radius: 3px;
+			}
+			.booking-form button.button-submit,
+			button:not(:hover):not(:active):not(.has-background){
+				background-color: green !important;
+			    color: #fff;
+			    font-weight: 450;
+			    font-size: 15px;
 			}
 		</style>
 	<?php }
