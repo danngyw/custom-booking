@@ -56,7 +56,7 @@ function html_list_booking(){
     <form id="posts-filter" method="get">
 
 <p class="search-box">
-  <label class="screen-reader-text" for="post-search-input">Search Posts:</label>
+  <label class="screen-reader-text" for="post-search-input">Search :</label>
   <input type="search" id="post-search-input" name="s" value="">
     <input type="submit" id="search-submit" class="button" value="Search Posts">
     <br />
