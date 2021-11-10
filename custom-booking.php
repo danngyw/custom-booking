@@ -29,6 +29,8 @@ Class CustomBooking{
 		$fullname 	= $request['fullname'];
 		$email 		= $request['email'];
 		$phone 		= $request['phone'];
+		var_dump($phone);
+		die();
 
 		global $wpdb;
 		$tbl_book 	= $wpdb->prefix . 'book_room';
@@ -186,7 +188,7 @@ function custom_booking_create_table() {
 	$tbl_book = $wpdb->prefix . 'book_room';
 	$sql = "CREATE TABLE $tbl_book (
 		id mediumint(9) NOT NULL AUTO_INCREMENT,
-		phone mediumint(9) NOT NULL ,
+		phone varchar(19) NOT NULL ,
 		full_name varchar(55) NOT NULL ,
 		email varchar(55) NOT NULL ,
 		gmt_time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,

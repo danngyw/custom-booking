@@ -39,6 +39,7 @@ function booking_row_html($booking){?>
 <div class="hidden" id="inline_8">
   <div class="post_title"><?php echo $booking->full_name;?></div><div class="post_name">phong-don</div>
   <?php
+ 
   $string = "?page=booking-room&action=delete&id={$booking->id}";
   $trash_url = admin_url($string);
   ?>
@@ -47,7 +48,7 @@ function booking_row_html($booking){?>
     <span class="trash"><a href="<?php echo $trash_url;?>" class="submitdelete" onclick="return confirm_delete()" aria-label="Move “Phòng đơn” to the Trash">Delete</a> | </span><span class="view"><a href="http://localhost/wp/room/phong-don/" rel="bookmark" aria-label="View “Phòng đơn”">View</a></span></div><button type="button" class="toggle-row"><span class="screen-reader-text">Show more details</span></button></td>
 
 
-  <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
+  <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php var_dump($booking); echo $booking->phone;?> </td>
   <td class="taxonomy-room_range column-taxonomy-room_range" data-colname="Range"><?php echo $booking->email;?></td>
   <td class="date column-date" data-colname="Date">
     <?php
@@ -77,7 +78,6 @@ function html_list_booking(){
         delete_booking_record($id);
     }
 
-
     if($order == 'DESC'){
       $order_url = admin_url('?page=booking-room&orderby=date&order=asc');
     } else{
@@ -87,6 +87,7 @@ function html_list_booking(){
     $text = isset($_GET['s']) ? $_GET['s'] : '';
     $search  = '';
     if($text){
+        $order_url.='&s='.$text;
         $search = " WHERE full_name LIKE '%{$text}%' OR email LIKE '%{$text}%' OR phone LIKE '%{$text}%'";
     }
     $sql = "SELECT * FROM $tbl_booking $search ORDER BY  id {$order}";
@@ -107,17 +108,21 @@ function html_list_booking(){
         <p class="search-box">
             <label class="screen-reader-text" for="post-search-input">Search :</label>
             <input type="hidden" id="post-search-input" name="page" value="booking-room">
-            <input type="text" id="post-search-input" name="s" value="">
-            <input type="submit" id="search-submit" class="button" value="Search Posts">
+            <input type="text" id="post-search-input" name="s" value="<?php echo $text;?>">
+            <input type="submit" id="search-submit" class="button" value="Search Booking">
             <br />
         </p>
         <p style="margin-bottom: 15px; display: inline-block;"> &nbsp; </p>
         <?php
-        table_booking_header();
-        foreach($results as $booking){
-          booking_row_html($booking);
+        table_booking_header($order_url);
+        if($results){
+            foreach($results as $booking){
+              booking_row_html($booking);
+            }
+        } else{
+            echo('<tr><td colspan="4"><h3>No booking found.</h3></td></tr>');
         }
-        table_booking_footer();
+        table_booking_footer($order_url);
         ?>
     </form>
 </div>
@@ -137,12 +142,12 @@ function table_booking_footer(){?>
   <tfoot>
   <tr>
     <td class="manage-column column-cb check-column"><label class="screen-reader-text" for="cb-select-all-2">Select All</label><input id="cb-select-all-2" type="checkbox"></td>
-    <th scope="col" class="manage-column column-title column-primary sortable desc"><a href="#/edit.php?post_type=room&amp;orderby=title&amp;order=asc"><span>Title</span><span class="sorting-indicator"></span></a></th>
+    <th scope="col" class="manage-column column-title column-primary desc"><span>Full name</span></th>
 
     <th scope="col" class="manage-column column-taxonomy-rate">Phone</th>
     <th scope="col" class="manage-column column-taxonomy-room_range">Email</th>
     <th scope="col" class="manage-column column-date sortable asc">
-        <a href="#wp-admin/edit.php?post_type=room&amp;orderby=date&amp;order=desc"><span>Date</span><span class="sorting-indicator"></span></a>
+        <a href="<?php echo $order_url;?>"><span>Date</span><span class="sorting-indicator"></span></a>
       </th>
       </tr>
   </tfoot>
@@ -150,13 +155,15 @@ function table_booking_footer(){?>
 </table>
 <?php }
 
-function table_booking_header(){?>
+function table_booking_header($order_url){
+
+    ?>
 <table class="wp-list-table widefat fixed striped table-view-list posts">
   <thead>
   <tr>
     <td id="cb" class="manage-column column-cb check-column"><label class="screen-reader-text" for="cb-select-all-1">Select All</label><input id="cb-select-all-1" type="checkbox"></td>
-    <th scope="col" id="title" class="manage-column column-title column-primary sortable desc">
-      <a href="#"><span>Full name</span><span class="sorting-indicator"></span></a>
+    <th scope="col" id="title" class="manage-column column-title column-primary desc">
+      <span>Full name</span>
     </th>
 
     <th scope="col" id="taxonomy-rate" class="manage-column column-taxonomy-rate">Phone</th>
