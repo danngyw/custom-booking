@@ -3,7 +3,7 @@
         jQuery.validator.addMethod("phoneUS", function(phone_number, element) {
             //return this.optional(element)  && phone_number.match(/^(\()?(\d{3})([\)-\. ])?(\d{3})([-\. ])?(\d{4})$/);
             return phone_number.match(/^\+(?:[0-9] ?){6,14}[0-9]$/) ||phone_number.match(/^(?:[0-9] ?){6,14}[0-9]$/);
-        }, "Please specify a valid phone number");
+        }, "Please specify a valid phone number.");
 
         $(".booking-form").validate({
             debug: true,
