@@ -186,6 +186,9 @@ Class CustomBooking{
 			    border: 1px solid green;
 			    height: 39px;
 			}
+			.booking-form input[type=text]:focus{
+				outline: 0 !important;
+			}
 
 		</style>
 	<?php }
