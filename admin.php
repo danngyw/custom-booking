@@ -86,10 +86,10 @@ function html_list_booking(){
     <td class="manage-column column-cb check-column"><label class="screen-reader-text" for="cb-select-all-2">Select All</label><input id="cb-select-all-2" type="checkbox"></td>
     <th scope="col" class="manage-column column-title column-primary sortable desc"><a href="#/edit.php?post_type=room&amp;orderby=title&amp;order=asc"><span>Title</span><span class="sorting-indicator"></span></a></th>
 
-    <th scope="col" class="manage-column column-taxonomy-rate">Rates</th>
-    <th scope="col" class="manage-column column-taxonomy-room_range">Range</th>
+    <th scope="col" class="manage-column column-taxonomy-rate">Phone</th>
+    <th scope="col" class="manage-column column-taxonomy-room_range">Email</th>
     <th scope="col" class="manage-column column-date sortable asc">
-        <a href="http://localhost/wp/wp-admin/edit.php?post_type=room&amp;orderby=date&amp;order=desc"><span>Date</span><span class="sorting-indicator"></span></a>
+        <a href="#wp-admin/edit.php?post_type=room&amp;orderby=date&amp;order=desc"><span>Date</span><span class="sorting-indicator"></span></a>
       </th>
       </tr>
   </tfoot>
