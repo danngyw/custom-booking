@@ -73,11 +73,11 @@ function shortcode_booking_form(){
         </div>
         <div class="form-group">
             <label >Email</label>
-            <input type="email" name="email" required class="form-control"  placeholder="Your email">
+            <input type="email" name="email" required class="form-control"  placeholder="Your Email">
         </div>
         <div class="form-group">
             <label >Phone number</label>
-            <input type="text" name="phone" required class="form-control"  placeholder="Phone number">
+            <input type="text" name="phone" required class="form-control"  placeholder="Phone Number">
         </div>
 
         <div class="form-group">
