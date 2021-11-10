@@ -53,6 +53,8 @@ function html_list_booking(){
     echo '<div class="wrap">';
 
     ?>
+
+    <h1 class="wp-heading-inline">List Booking</h1>
     <form id="posts-filter" method="get">
 
 <p class="search-box">
