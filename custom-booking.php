@@ -74,6 +74,7 @@ Class CustomBooking{
 	        'public'    => true,
 	        'label'     => __( 'Rooms', 'textdomain' ),
 	        'menu_icon' => 'dashicons-book',
+	        'menu_position' => 11,
 	        'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields' ),
 	    );
     	register_post_type( 'room', $args );

@@ -20,8 +20,9 @@ function custom_menu() {
       'manage_options',
       'booking-room',
       'html_list_booking',
-      'dashicons-media-spreadsheet'
-     );
+      'dashicons-media-spreadsheet',
+      11
+    );
 }
 function booking_row_html($booking){?>
   <tr id="post-8" class="iedit author-self level-0 post-8 type-room status-publish hentry rate-6 entry">
