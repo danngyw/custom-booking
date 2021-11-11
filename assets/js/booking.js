@@ -5,6 +5,10 @@
             return phone_number.match(/^\+(?:[0-9] ?){6,14}[0-9]$/) ||phone_number.match(/^(?:[0-9] ?){6,14}[0-9]$/);
         }, "Please specify a valid phone number.");
 
+        //$(document).off('.datepicker.data-api');
+        $('.datepicker').datetimepicker({
+            format: 'mm/dd/yyyy',
+        });
         $(".booking-form").validate({
             debug: true,
             rules: {
