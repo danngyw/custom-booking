@@ -127,13 +127,6 @@ function html_list_booking(){
         ?>
     </form>
 </div>
-<script type="text/javascript">
-  $(document).ready(function(){
-    $(".submitdelete").click(function(){
-      alert('111');
-    });
-  })
-</script>
 <?php
 }
 
