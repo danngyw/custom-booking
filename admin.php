@@ -91,9 +91,21 @@ function html_list_booking(){
         $order_url.='&s='.$text;
         $search = " WHERE full_name LIKE '%{$text}%' OR email LIKE '%{$text}%' OR phone LIKE '%{$text}%'";
     }
+
+    //page 1 - (records 01-10): offset = 0, limit=10;
+
+    //page 2 - (records 11-20) offset = 10, limit =10;
+
     $sql = "SELECT * FROM $tbl_booking $search ORDER BY  id {$order}";
-    $results = $wpdb->get_results($sql);
-    $total = count($results);
+    $paged = isset($_GET['paged']) ? (int) $_GET['paged']: 1;
+
+
+    $posts_per_page = 10;
+    $offset = ($paged-1)*$posts_per_page;
+    $sql_current_page = "SELECT * FROM $tbl_booking $search ORDER BY  id {$order}   LIMIT  $offset, 10 ";
+    $total_results = $wpdb->get_results($sql);
+    $total = count($total_results);
+    $results = $wpdb->get_results($sql_current_page);
 
     echo '<div class="wrap">';
 
@@ -140,11 +152,13 @@ function html_list_booking(){
       <div class="tablenav-pages">
         <?php
         $big = 999999999; // need an unlikely integer
+        
+        $max = ceil($total/$posts_per_page);
         echo paginate_links( array(
             'base'  => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
             'format'  => '?paged=%#%',
-            'current' => max( 1, get_query_var('paged') ),
-            'total'   => $total
+            'current' => max( 1, $paged ),
+            'total'   => $max
         ) );
         ?>
       </div>
