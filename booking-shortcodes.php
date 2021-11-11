@@ -8,7 +8,7 @@ function show_list_room(){
     );
     $query  = new WP_Query($args);
     if($query->have_posts()){
-        echo '<div class="container">';
+        echo '<div class="container"> <div class="row">';
         while($query->have_posts()){
             $query->the_post();
             global $post;
@@ -20,7 +20,7 @@ function show_list_room(){
             $ranges    = get_the_terms($room_id, 'room_range' );
             $rate     = get_the_terms($room_id, 'rate' );
 
-            echo '<div class=" col-sm-4 room-item">';
+            echo '<div class=" col-4 room-item">';
             echo  '<a href="'.get_permalink().'" class="title-link">';
             echo '<h3>'.get_the_title().'</h3>';
             echo '</a>';
@@ -48,7 +48,7 @@ function show_list_room(){
             echo '</div>';
             echo '</div>';
         }
-        echo '</div>';
+        echo '</div></div>';
     } else {
         echo 'No room found.';
     }
@@ -93,7 +93,7 @@ function shortcode_booking_form(){
                 </div>
 
             </div>
-            <div class="col-md-6 ">
+            <div class="col-md-6">
                 <label for="validationTooltip02">Check Out</label>
                 <div class='input-group date' id='datetimepicker1'>
                     <input type='text' class="form-control datepicker" />

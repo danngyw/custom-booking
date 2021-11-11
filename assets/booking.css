@@ -31,6 +31,7 @@
 .room-item a{
 	font-size: 15px;
 	color: #4fb94d;
+	text-decoration: none;
 }
 .room-item a.title-link:hover{
 	color: #4fb94d;
@@ -38,6 +39,7 @@
 .room-item a.title-link{
 	margin-bottom: 15px;
 	display: block;
+	text-decoration: none;
 }
 
 .room-item a.img-link{
