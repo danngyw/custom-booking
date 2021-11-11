@@ -12,6 +12,7 @@ Tạo page mới và sử dụng shortcode: booking_room để list tất cả r
 Tạo mới page và sử dụng shortcode: booking_form trong phần content để tạo form booking.
 
 Quản lý booking:
+
 Danh sach booking: http://domain.com/wp-admin/admin.php?page=booking-room
 
-Note: nếu có lỗi gì thì thử activate lại plugin.
+Note: Nếu có lỗi gì thì thử activate lại plugin.
