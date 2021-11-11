@@ -59,7 +59,7 @@ body button{
 	color: #db8317;
 }
 .booking-form input{
-	border: 1px solid #ccc;
+	border: 1px solid #ccc !important;
 	border-radius: 3px;
 }
 .booking-form button.button-submit{
