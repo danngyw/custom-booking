@@ -93,7 +93,8 @@ function html_list_booking(){
     }
     $sql = "SELECT * FROM $tbl_booking $search ORDER BY  id {$order}";
     $results = $wpdb->get_results($sql);
-
+    $total = count($results);
+    var_dump($total);
     echo '<div class="wrap">';
 
     ?>
@@ -104,12 +105,19 @@ function html_list_booking(){
     </script>
 
     <h1 class="wp-heading-inline">List Booking</h1>
+    <hr class="wp-header-end">
+    <h2 class="screen-reader-text">Filter posts list</h2>
+    <ul class="subsubsub">
+      <li class="all"><a href="#" class="current" aria-current="page">All <span class="count">(<?php echo $total;?>)</span></a> |</li>
+      <li class="publish"><a href="#">Published <span class="count">(<?php echo $total;?>)</span></a></li>
+       <li class="archived"><a href="#">Archived <span class="count">(0)</span></a></li>
+    </ul>
     <form id="posts-filter" method="get" action="<?php echo $admin_url;?>">
 
         <p class="search-box">
             <label class="screen-reader-text" for="post-search-input">Search :</label>
             <input type="hidden" id="post-search-input" name="page" value="booking-room">
-            <input type="text" id="post-search-input" name="s" value="<?php echo $text;?>">
+            <input type="text" id="post-search-input" name="s" placeholder="Keyword" value="<?php echo $text;?>">
             <input type="submit" id="search-submit" class="button" value="Search Booking">
             <br />
         </p>
