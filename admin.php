@@ -94,7 +94,7 @@ function html_list_booking(){
     $sql = "SELECT * FROM $tbl_booking $search ORDER BY  id {$order}";
     $results = $wpdb->get_results($sql);
     $total = count($results);
-    var_dump($total);
+
     echo '<div class="wrap">';
 
     ?>
@@ -133,7 +133,22 @@ function html_list_booking(){
         }
         table_booking_footer($order_url);
         ?>
+
+
     </form>
+    <div class="tablenav bottom">
+      <div class="tablenav-pages">
+        <?php
+        $big = 999999999; // need an unlikely integer
+        echo paginate_links( array(
+            'base'  => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+            'format'  => '?paged=%#%',
+            'current' => max( 1, get_query_var('paged') ),
+            'total'   => $total
+        ) );
+        ?>
+      </div>
+    </div>
 </div>
 <?php
 }
