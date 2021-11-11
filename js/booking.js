@@ -101,13 +101,15 @@
                     console.log('add class disable');
                     form.find(".button-submit").addClass('disabled');
                     form.find(".button-submit").attr('disabled','disabled');
-                    form.find(".btn-loading ").addClass("loading spinner-border");
+                    form.find(".btn-loading ").addClass("loading spinner-border spinner-border-sm");
                 },
                 success : function(res){
                     form.find(".btn-submit").removeAttr('disabled');
                     if ( res.success ){
-                        // $(".booking-form").html('<h3>'+res.msg+'</h3>');
-                        alert(res.msg);
+                        form.find(".button-submit").removeClass('disabled');
+                        $(".booking-form").show('slow');
+                        $(".booking-form").html('<h3>'+res.msg+'</h3>').show('slow');
+                        //alert(res.msg);
                     } else {
 
                     }
