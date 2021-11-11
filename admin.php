@@ -7,7 +7,7 @@ function delete_booking_record($id){
     $check =  $wpdb->delete(
         $tbl_book,          // table name with dynamic prefix
         ['id' => $id],                       // which id need to delete
-        ['%d'],                             // make sure the id format
+        ['%d']                             // make sure the id format
     );
     if($check){
         echo '<p> A booking has been deleted.</p>';
