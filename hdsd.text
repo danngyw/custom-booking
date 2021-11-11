@@ -7,9 +7,9 @@ Fron-end.
 
 Copy file: single-room.php bỏ vào theme( wp-content/themes/curren-theme/ folder).
 
-Tạo page mới và sử dụng shortcode: booking_room để list tất cả room;
+Tạo page mới và sử dụng shortcode: [booking_room] để list tất cả room;
 
-Tạo mới page và sử dụng shortcode: booking_form trong phần content để tạo form booking.
+Tạo mới page và sử dụng shortcode: [booking_form] trong phần content để tạo form booking.
 
 Quản lý booking:
 

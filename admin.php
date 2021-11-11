@@ -1,6 +1,6 @@
 <?php
 
-require_once('class-booking-admin.php');
+require_once(BOOKING_PATH.'/class-booking-admin.php');
 function delete_booking_record($id){
     global $wpdb;                           // WPDB class object
     $tbl_book  = $wpdb->prefix . 'book_room';

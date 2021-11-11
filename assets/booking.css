@@ -25,6 +25,9 @@ body button{
 	font-size: 15px;
 	color: #4fb94d;
 }
+.room-item a.img-link{
+	min-height: 239px;
+}
 .room-item a img{
 	max-height: 300px;
 	clear: both;

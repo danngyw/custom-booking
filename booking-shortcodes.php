@@ -21,10 +21,10 @@ function show_list_room(){
             $rate     = get_the_terms($room_id, 'rate' );
 
             echo '<div class=" col-sm-4 room-item">';
-            echo  '<a href="'.get_permalink().'">';
+            echo  '<a href="'.get_permalink().'" class="title-link">';
             echo '<h3>'.get_the_title().'</h3>';
             echo '</a>';
-            echo  '<a href="'.get_permalink().'">';
+            echo  '<a href="'.get_permalink().'" class="img-link">';
             if(has_post_thumbnail()){
                 the_post_thumbnail();
             }else{
