@@ -8,6 +8,7 @@ function show_list_room(){
     );
     $query  = new WP_Query($args);
     if($query->have_posts()){
+        echo '<div class="container">';
         while($query->have_posts()){
             $query->the_post();
             global $post;
@@ -19,10 +20,11 @@ function show_list_room(){
             $ranges    = get_the_terms($room_id, 'room_range' );
             $rate     = get_the_terms($room_id, 'rate' );
 
-            echo '<div class="col-md-3 room-item">';
+            echo '<div class=" col-sm-4 room-item">';
             echo  '<a href="'.get_permalink().'">';
             echo '<h3>'.get_the_title().'</h3>';
-
+            echo '</a>';
+            echo  '<a href="'.get_permalink().'">';
             if(has_post_thumbnail()){
                 the_post_thumbnail();
             }else{
@@ -46,6 +48,7 @@ function show_list_room(){
 
             echo '</div>';
         }
+        echo '</div>';
     } else {
         echo 'No room found.';
     }
