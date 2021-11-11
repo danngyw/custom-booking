@@ -80,10 +80,10 @@ function html_list_booking(){
     }
 
     if($order == 'DESC'){
-      $order_url = admin_url('?page=booking-room&orderby=date&order=asc');
+      $order_url = admin_url('?page=booking-room&order=asc');
     } else{
       $order = 'ASC';
-      $order_url = admin_url('?page=booking-room&orderby=date&order=desc');
+      $order_url = admin_url('?page=booking-room');
     }
     $text = isset($_GET['s']) ? $_GET['s'] : '';
     $search  = '';
@@ -152,10 +152,9 @@ function html_list_booking(){
       <div class="tablenav-pages">
         <?php
         $big = 999999999; // need an unlikely integer
-        
         $max = ceil($total/$posts_per_page);
         echo paginate_links( array(
-            'base'  => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+            'base'  => str_replace( $big, '%#%', get_pagenum_link( $big )  ),
             'format'  => '?paged=%#%',
             'current' => max( 1, $paged ),
             'total'   => $max
