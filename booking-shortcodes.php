@@ -35,7 +35,7 @@ function show_list_room(){
             echo '<span class="room-price">Price: '.$price.'($)</span>';
             if(!is_wp_error($ranges) && !empty($ranges)){
                 $range_string = join(', ', wp_list_pluck($ranges, 'name'));
-                echo '<span class="room-range">Range: '.$range_string.' stars</span>';
+                echo '<span class="room-range">Range: '.$range_string.' $(USD)</span>';
             }
             if(!is_wp_error($rate) && !empty($rate)){
                 $rate_string = join(', ', wp_list_pluck($rate, 'name'));

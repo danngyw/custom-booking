@@ -27,9 +27,10 @@ body button{
 }
 .room-item a.img-link{
 	min-height: 239px;
+	display: block;
 }
 .room-item a img{
-	max-height: 300px;
+	max-height: 239px;
 	clear: both;
 	display: block;
 	margin-bottom: 10px;
