@@ -186,8 +186,18 @@ Class CustomBooking{
 			    border: 1px solid green;
 			    height: 39px;
 			}
+			.booking-form button.button-submit.disabled{
+				background-color: #ccc !important;
+				border: 1px solid #ccc;
+			}
 			.booking-form input[type=text]:focus{
 				outline: 0 !important;
+			}
+			.booking-form button span.spinner-border{
+				width: 20px;
+				height: 20px;
+				position: relative;
+				left: 15px;
 			}
 
 		</style>

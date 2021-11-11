@@ -80,7 +80,7 @@
             if(! form.valid()){
                 console.log('check submit fail');
                 form.attr('disabled', 'disabled');
-                form.find(".btn-submit").attr('disabled','disabled');
+                form.find(".button-submit").attr('disabled','disabled');
                 return false;
             }
             var send    = {};
@@ -98,15 +98,15 @@
                 },
                 beforeSend  : function(event){
                     form.attr('disabled', 'disabled');
-                    form.find(".btn-submit").attr('disabled','disabled');
-                    form.find(".btn-submit").addClass("loading");
+                    console.log('add class disable');
+                    form.find(".button-submit").addClass('disabled');
+                    form.find(".button-submit").attr('disabled','disabled');
+                    form.find(".btn-loading ").addClass("loading spinner-border");
                 },
                 success : function(res){
                     form.find(".btn-submit").removeAttr('disabled');
-                    form.find(".btn-submit").removeClass("loading");
                     if ( res.success ){
-
-                        $(".booking-form").html('<h3>'+res.msg+'</h3>');
+                        // $(".booking-form").html('<h3>'+res.msg+'</h3>');
                         alert(res.msg);
                     } else {
 
