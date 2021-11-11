@@ -26,7 +26,7 @@ function show_list_room(){
             if(has_post_thumbnail()){
                 the_post_thumbnail();
             }else{
-                echo '<img src="'.BOOKING_URL.'/img/no-thumbnail.jpg" >';
+                echo '<img src="'.BOOKING_URL.'/assets/img/no-thumbnail.jpg" >';
             }
             echo '</a>';
 
