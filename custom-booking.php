@@ -16,12 +16,11 @@ require_once('booking-shortcodes.php');
 require_once('admin.php');
 Class CustomBooking{
 	function __construct(){
-		add_action( 'init', array($this, 'custom_codex_custom_init' ));
-		add_action( 'wp_footer', array($this, 'add_custom_css' ));
-		add_action('wp_head',array($this,'add_css'));
-		add_action('wp_enqueue_scripts', array($this, 'enqueue_script'));
-		add_action('wp_ajax_save_booking',array($this,'save_booking'));
-		add_action('wp_ajax_nopriv_save_booking',array($this,'save_booking'));
+		add_action( 'init', array($this, 'resigster_post_type' ));
+		add_action( 'wp_head',array($this,'add_head_css'));
+		add_action( 'wp_enqueue_scripts', array($this, 'enqueue_script'));
+		add_action( 'wp_ajax_save_booking',array($this,'save_booking'));
+		add_action( 'wp_ajax_nopriv_save_booking',array($this,'save_booking'));
 	}
 	function save_booking(){
 
@@ -52,15 +51,12 @@ Class CustomBooking{
 	function enqueue_script(){
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('validate','https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js', array('jquery'), rand(), true);
-		wp_enqueue_script( 'booking',
-        	plugin_dir_url( __FILE__ ) . '/js/booking.js',
-	        array('jquery','validate'),
-	        rand(),
-	        true
+		wp_enqueue_script( 'booking-js',
+        	BOOKING_URL . '/assets/js/booking.js', array('jquery','validate'), rand(),true
 	    );
+	    wp_enqueue_style( 'booking-style', BOOKING_URL.'/assets/booking.css',array(), rand() );
 	}
-	function add_css(){
-	?>
+	function add_head_css(){ ?>
 	<script type="text/javascript">
 		var booking = {ajax_url:'<?php echo admin_url().'admin-ajax.php'; ?>'};
 	</script>
@@ -69,7 +65,7 @@ Class CustomBooking{
 		<?php
 
 	}
-	function custom_codex_custom_init() {
+	function resigster_post_type() {
 		$args = array(
 	        'public'    => true,
 	        'label'     => __( 'Rooms', 'textdomain' ),
@@ -127,82 +123,6 @@ Class CustomBooking{
 
 	    register_taxonomy( 'room_range', 'room', $args );
 	}
-	function add_custom_css(){
-
-		?>
-		<style type="text/css">
-			.col-md-3{
-				width: 33.33%;
-				display: inline-block;
-				padding: 10px;
-				float: left;
-			}
-			.col-md-3 a{
-				text-decoration: none;
-			}
-			.room-type,.room-excerpt,.room-price{
-				display: block;
-				clear: both;
-			}
-			.room-item{
-				overflow: hidden;
-				font-size: 15px;
-				margin:  0 0 15px 0;
-			}
-			.room-item a{
-				font-size: 15px;
-			}
-			.room-item a img{
-				max-height: 300px;
-				clear: both;
-				display: block;
-				margin-bottom: 10px;
-				border-radius: 5px;
-			}
-			.room-item h3{
-				font-size: 25px;
-				margin-bottom: 10px;
-			}
-			.single-room img{
-				border-radius: 5px;
-				margin: 10px 0 15px 0;
-			}
-			.booking-form button.disabled{
-				background-color: #ccc !important;
-			}
-			.form-group label.error{
-				font-size: 13px;
-				color: #db8317;
-			}
-			.booking-form input{
-				border: 1px solid #ccc;
-				border-radius: 3px;
-			}
-			.booking-form button.button-submit,
-			button:not(:hover):not(:active):not(.has-background){
-				background-color: green !important;
-			    color: #fff;
-			    font-weight: 450;
-			    font-size: 15px;
-			    border: 1px solid green;
-			    height: 39px;
-			}
-			.booking-form button.button-submit.disabled{
-				background-color: #ccc !important;
-				border: 1px solid #ccc;
-			}
-			.booking-form input[type=text]:focus{
-				outline: 0 !important;
-			}
-			.booking-form button span.spinner-border{
-				width: 20px;
-				height: 20px;
-				position: relative;
-				left: 15px;
-			}
-
-		</style>
-	<?php }
 
 }
 $booking = new CustomBooking();
