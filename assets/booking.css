@@ -1,0 +1,69 @@
+.col-md-3{
+				width: 33.33%;
+				display: inline-block;
+				padding: 10px;
+				float: left;
+			}
+			.col-md-3 a{
+				text-decoration: none;
+			}
+			.room-type,.room-excerpt,.room-price{
+				display: block;
+				clear: both;
+			}
+			.room-item{
+				overflow: hidden;
+				font-size: 15px;
+				margin:  0 0 15px 0;
+			}
+			.room-item a{
+				font-size: 15px;
+			}
+			.room-item a img{
+				max-height: 300px;
+				clear: both;
+				display: block;
+				margin-bottom: 10px;
+				border-radius: 5px;
+			}
+			.room-item h3{
+				font-size: 25px;
+				margin-bottom: 10px;
+			}
+			.single-room img{
+				border-radius: 5px;
+				margin: 10px 0 15px 0;
+			}
+			.booking-form button.disabled{
+				background-color: #ccc !important;
+			}
+			.form-group label.error{
+				font-size: 13px;
+				color: #db8317;
+			}
+			.booking-form input{
+				border: 1px solid #ccc;
+				border-radius: 3px;
+			}
+			.booking-form button.button-submit,
+			button:not(:hover):not(:active):not(.has-background){
+				background-color: green !important;
+			    color: #fff;
+			    font-weight: 450;
+			    font-size: 15px;
+			    border: 1px solid green;
+			    height: 39px;
+			}
+			.booking-form button.button-submit.disabled{
+				background-color: #ccc !important;
+				border: 1px solid #ccc;
+			}
+			.booking-form input[type=text]:focus{
+				outline: 0 !important;
+			}
+			.booking-form button span.spinner-border{
+				width: 20px;
+				height: 20px;
+				position: relative;
+				left: 15px;
+			}
