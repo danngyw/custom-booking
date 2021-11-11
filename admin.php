@@ -1,4 +1,6 @@
 <?php
+
+require_once('class-booking-admin.php');
 function delete_booking_record($id){
     global $wpdb;                           // WPDB class object
     $tbl_book  = $wpdb->prefix . 'book_room';
@@ -68,103 +70,9 @@ function booking_row_html($booking){?>
   <?php }
 function html_list_booking(){
 
-    global $wpdb;
-    $tbl_booking   = $wpdb->prefix . 'book_room';
 
-    $order      = isset($_GET['order']) ? strtoupper($_GET['order']) : 'DESC';
-    $action     = isset($_GET['action']) ? $_GET['action'] : '';
-    $id         = isset($_GET['id']) ? strtoupper($_GET['id']) : 0;
-    $admin_url = admin_url('?page=booking-room');
-
-    if( $action == 'delete' && $id > 0){
-        delete_booking_record($id);
-    }
-
-    if($order == 'DESC'){
-      $order_url = admin_url('?page=booking-room&order=asc');
-    } else{
-      $order = 'ASC';
-      $order_url = admin_url('?page=booking-room');
-    }
-    $text = isset($_GET['s']) ? $_GET['s'] : '';
-    $search  = '';
-    if($text){
-        $order_url.='&s='.$text;
-        $search = " WHERE full_name LIKE '%{$text}%' OR email LIKE '%{$text}%' OR phone LIKE '%{$text}%'";
-    }
-
-    //page 1 - (records 01-10): offset = 0, limit=10;
-
-    //page 2 - (records 11-20) offset = 10, limit =10;
-
-    $sql = "SELECT * FROM $tbl_booking $search ORDER BY  id {$order}";
-    $paged = isset($_GET['paged']) ? (int) $_GET['paged']: 1;
-
-
-    $posts_per_page = 10;
-    $offset = ($paged-1)*$posts_per_page;
-    $sql_current_page = "SELECT * FROM $tbl_booking $search ORDER BY  id {$order}   LIMIT  $offset, 10 ";
-    $total_results = $wpdb->get_results($sql);
-    $total = count($total_results);
-    $results = $wpdb->get_results($sql_current_page);
-
-    echo '<div class="wrap">';
-
-    ?>
-    <script type="text/javascript">
-    function confirm_delete() {
-      return confirm('are you sure?');
-    }
-    </script>
-
-    <h1 class="wp-heading-inline">List Booking</h1>
-    <hr class="wp-header-end">
-    <h2 class="screen-reader-text">Filter posts list</h2>
-    <ul class="subsubsub">
-      <li class="all"><a href="#" class="current" aria-current="page">All <span class="count">(<?php echo $total;?>)</span></a> |</li>
-      <li class="publish"><a href="#">Published <span class="count">(<?php echo $total;?>)</span></a></li>
-       <li class="archived"><a href="#">Archived <span class="count">(0)</span></a></li>
-    </ul>
-    <form id="posts-filter" method="get" action="<?php echo $admin_url;?>">
-
-        <p class="search-box">
-            <label class="screen-reader-text" for="post-search-input">Search :</label>
-            <input type="hidden" id="post-search-input" name="page" value="booking-room">
-            <input type="text" id="post-search-input" name="s" placeholder="Keyword" value="<?php echo $text;?>">
-            <input type="submit" id="search-submit" class="button" value="Search Booking">
-            <br />
-        </p>
-        <p style="margin-bottom: 15px; display: inline-block;"> &nbsp; </p>
-        <?php
-        table_booking_header($order_url);
-        if($results){
-            foreach($results as $booking){
-              booking_row_html($booking);
-            }
-        } else {
-            echo('<tr><td colspan="4"><h3>No booking found.</h3></td></tr>');
-        }
-        table_booking_footer($order_url);
-        ?>
-
-
-    </form>
-    <div class="tablenav bottom">
-      <div class="tablenav-pages">
-        <?php
-        $big = 999999999; // need an unlikely integer
-        $max = ceil($total/$posts_per_page);
-        echo paginate_links( array(
-            'base'  => str_replace( $big, '%#%', get_pagenum_link( $big )  ),
-            'format'  => '?paged=%#%',
-            'current' => max( 1, $paged ),
-            'total'   => $max
-        ) );
-        ?>
-      </div>
-    </div>
-</div>
-<?php
+    $table = new bookingAdmin();
+    $table->show();
 }
 
 function table_booking_footer(){?>
