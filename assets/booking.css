@@ -9,7 +9,7 @@ body button{
 }
 .container{
 	max-width: 100%;
-	min-width: 1200px;
+	min-width: 1248px;
 }
 .room-type,.room-excerpt,.room-price{
 	display: block;
@@ -25,6 +25,10 @@ body button{
 	font-size: 15px;
 	color: #4fb94d;
 }
+.room-item a.title-link{
+	margin-bottom: 15px;
+	display: block;
+}
 .room-item a.img-link{
 	min-height: 239px;
 	display: block;
@@ -37,8 +41,11 @@ body button{
 	border-radius: 5px;
 }
 .room-item h3{
-	font-size: 25px;
+	font-size: 35px;
 	margin-bottom: 10px;
+}
+.room-item a:hover{
+	text-decoration: none;
 }
 .single-room img{
 	border-radius: 5px;
