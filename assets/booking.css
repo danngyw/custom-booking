@@ -25,10 +25,14 @@ body button{
 	font-size: 15px;
 	color: #4fb94d;
 }
+.room-item a.title-link:hover{
+	color: #4fb94d;
+}
 .room-item a.title-link{
 	margin-bottom: 15px;
 	display: block;
 }
+
 .room-item a.img-link{
 	min-height: 239px;
 	display: block;
@@ -41,7 +45,7 @@ body button{
 	border-radius: 5px;
 }
 .room-item h3{
-	font-size: 35px;
+	font-size: 39px;
 	margin-bottom: 10px;
 }
 .room-item a:hover{
@@ -61,6 +65,7 @@ body button{
 .booking-form input{
 	border: 1px solid #ccc !important;
 	border-radius: 3px;
+	min-height: 45px !important;
 }
 .booking-form button.button-submit{
 	margin-top: 25px;
