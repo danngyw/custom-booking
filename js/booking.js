@@ -81,6 +81,7 @@
                 console.log('check submit fail');
                 form.attr('disabled', 'disabled');
                 form.find(".button-submit").attr('disabled','disabled');
+                form.find(".button-submit").addClass('disabled');
                 return false;
             }
             var send    = {};
