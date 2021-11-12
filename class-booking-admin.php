@@ -126,14 +126,12 @@ Class bookingAdmin{
 	function table_header($total){ ?>
 		<div class="wrap">
 		    <script type="text/javascript">
-		    function confirm_delete() {
-		      return confirm('are you sure?');
-		    }
+			    function confirm_delete() {
+			      return confirm('are you sure?');
+			    }
 	    </script>
-
 	    <h1 class="wp-heading-inline">List Booking</h1>
 	    <hr class="wp-header-end">
-	    <h2 class="screen-reader-text">Filter posts list</h2>
 	    <ul class="subsubsub">
 	      <li class="all"><a href="#" class="current" aria-current="page">All <span class="count">(<?php echo $total;?>)</span></a> |</li>
 	      <li class="publish"><a href="#">Published <span class="count">(<?php echo $total;?>)</span></a></li>
@@ -151,12 +149,7 @@ Class bookingAdmin{
 	        <p style="margin-bottom: 15px; display: inline-block;"> &nbsp; </p>
 		<table class="wp-list-table widefat fixed striped table-view-list posts">
 			<thead>
-				<tr>
-
-
-					<?php $this->tbl_column_heading(); ?>
-
-				</tr>
+				<tr><?php $this->tbl_column_heading(); ?></tr>
 			</thead>
 
 			<tbody id="the-list"> <?php
@@ -166,7 +159,6 @@ Class bookingAdmin{
 				<tfoot>
 					<tr> <?php $this->tbl_column_heading(); ?> </tr>
 				</tfoot>
-
 			</table>
 		</form>
 	    <div class="tablenav bottom">
