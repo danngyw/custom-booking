@@ -152,16 +152,9 @@ Class bookingAdmin{
 		<table class="wp-list-table widefat fixed striped table-view-list posts">
 			<thead>
 				<tr>
-					<td id="cb" class="manage-column column-cb check-column"><label class="screen-reader-text" for="cb-select-all-1">Select All</label><input id="cb-select-all-1" type="checkbox"></td>
 
-					<?php foreach($this->colums as $key=>$colum){
-							$html = $colum['label'];
-							if($key == 'local_date'){
-								$html = "<a href='{$this->order_url}'><span>{$colum['label']}</span><span class='sorting-indicator'></span></a>";
-							}
-						echo "<th scope='col' id='col-{$key}' class='manage-column {$colum['class']}'>{$html}</th>";
-					}
-					?>
+
+					<?php $this->tbl_column_heading(); ?>
 
 				</tr>
 			</thead>
@@ -170,43 +163,25 @@ Class bookingAdmin{
 	}
 	function table_footer($total){ ?>
 				</tbody>
-
 				<tfoot>
-					<tr>
-					<td class="manage-column column-cb check-column"><label class="screen-reader-text" for="cb-select-all-2">Select All</label><input id="cb-select-all-2" type="checkbox"></td>
-					<!-- <th scope="col" class="manage-column column-title column-primary desc"><span>Full name</span></th>
-
-					<th scope="col" class="manage-column column-taxonomy-rate">Phone</th>
-					<th scope="col" class="manage-column column-taxonomy-room_range">Email</th>
-					<th scope="col" class="manage-column column-date sortable asc">
-						<a href="<?php echo $this->order_url;?>"><span>Date</span><span class="sorting-indicator"></span></a>
-					</th> -->
-					<?php foreach($this->colums as $key=>$colum){
-							$html = $colum['label'];
-							if($key == 'date'){
-								$html = '<a href="<?php echo $this->order_url;?>"><span>'.$colum['label'].'</span><span class="sorting-indicator"></span></a>';
-							}
-						echo "<th scope='col' id='col-{$key}' class='manage-column {$colum['class']}'>{$html}</th>";
-					} ?>
-					</tr>
-
+					<tr> <?php $this->tbl_column_heading(); ?> </tr>
 				</tfoot>
 
 			</table>
 		</form>
 	    <div class="tablenav bottom">
-			<div class="tablenav-pages">
-				<?php
-				$big = 999999999; // need an unlikely integer
-				$max = ceil($total/$this->posts_per_page);
-				echo paginate_links( array(
-				'base'  => str_replace( $big, '%#%', get_pagenum_link( $big )  ),
-				'format'  => '?paged=%#%',
-				'current' => max( 1, $this->paged ),
-				'total'   => $max
-				) );
-				?>
-			</div>
+				<div class="tablenav-pages">
+					<?php
+					$big = 999999999; // need an unlikely integer
+					$max = ceil($total/$this->posts_per_page);
+					echo paginate_links( array(
+					'base'  => str_replace( $big, '%#%', get_pagenum_link( $big )  ),
+					'format'  => '?paged=%#%',
+					'current' => max( 1, $this->paged ),
+					'total'   => $max
+					) );
+					?>
+				</div>
 	    </div>
 	</div>
 	<style type="text/css">
@@ -214,7 +189,16 @@ Class bookingAdmin{
 			width: 95px;
 		}
 	</style>
-
 	<?php
+	}
+	function tbl_column_heading(){ ?>
+		<td id="cb" class="manage-column column-cb check-column"><label class="screen-reader-text" for="cb-select-all-1">Select All</label><input id="cb-select-all-1" type="checkbox"></td><?php
+			foreach($this->colums as $key=>$colum){
+					$html = $colum['label'];
+					if($key == 'local_date'){
+						$html = "<a href='{$this->order_url}'><span>{$colum['label']}</span><span class='sorting-indicator'></span></a>";
+					}
+				echo "<th scope='col' id='col-{$key}' class='manage-column {$colum['class']}'>{$html}</th>";
+			}
 	}
 }
