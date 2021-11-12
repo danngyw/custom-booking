@@ -21,7 +21,7 @@ Class bookingAdmin{
 			'full_name' 	=> array('label'=>' Full name','class'=>'column-title column-primary'),
 			'phone' 			=> array('label'=>'Phone','class'=>'column-phone column-format'),
 			'email' 			=> array('label'=>'email','class'=>' column-author'),
-			'local_date' 	=> array('label'=>'Date','class'=>'column-date column-format'),
+			'local_date' 	=> array('label'=>'Date','class'=>'column-date sortable '.strtolower($order)),
 			'status' 			=> array('label'=>'Status','class'=>'column-status'),
 		);
 	}
@@ -154,9 +154,12 @@ Class bookingAdmin{
 				<tr>
 					<td id="cb" class="manage-column column-cb check-column"><label class="screen-reader-text" for="cb-select-all-1">Select All</label><input id="cb-select-all-1" type="checkbox"></td>
 
-					<?php foreach($this->colums as $colum){
-						;
-						echo '<th scope="col" id="taxonomy-rate" class="manage-column '.$colum['class'].'">'.$colum['label'].'</th>';
+					<?php foreach($this->colums as $key=>$colum){
+							$html = $colum['label'];
+							if($key == 'local_date'){
+								$html = "<a href='{$this->order_url}'><span>{$colum['label']}</span><span class='sorting-indicator'></span></a>";
+							}
+						echo "<th scope='col' id='col-{$key}' class='manage-column {$colum['class']}'>{$html}</th>";
 					}
 					?>
 
@@ -178,9 +181,12 @@ Class bookingAdmin{
 					<th scope="col" class="manage-column column-date sortable asc">
 						<a href="<?php echo $this->order_url;?>"><span>Date</span><span class="sorting-indicator"></span></a>
 					</th> -->
-					<?php foreach($this->colums as $colum){
-						;
-						echo '<th scope="col" id="taxonomy-rate" class="manage-column ">'.$colum['label'].'</th>';
+					<?php foreach($this->colums as $key=>$colum){
+							$html = $colum['label'];
+							if($key == 'date'){
+								$html = '<a href="<?php echo $this->order_url;?>"><span>'.$colum['label'].'</span><span class="sorting-indicator"></span></a>';
+							}
+						echo "<th scope='col' id='col-{$key}' class='manage-column {$colum['class']}'>{$html}</th>";
 					} ?>
 					</tr>
 
