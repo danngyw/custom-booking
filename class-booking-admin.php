@@ -18,11 +18,11 @@ Class bookingAdmin{
 	      $this->order_url = admin_url('?page=booking-room');
 	    }
 		$this->colums = array(
-			'full_name' 	=> array('label'=>' Full name'),
-			'phone' 		=> array('label'=>'Phone'),
-			'email' 		=> array('label'=>'email'),
-			'local_date' 	=> array('label'=>'Date'),
-			'status' 		=> array('label'=>'Status'),
+			'full_name' 	=> array('label'=>' Full name','class'=>'column-title column-primary'),
+			'phone' 			=> array('label'=>'Phone','class'=>'column-phone column-format'),
+			'email' 			=> array('label'=>'email','class'=>' column-author'),
+			'local_date' 	=> array('label'=>'Date','class'=>'column-date column-format'),
+			'status' 			=> array('label'=>'Status','class'=>'column-status'),
 		);
 	}
 
@@ -43,16 +43,21 @@ Class bookingAdmin{
         <strong><a class="row-title" href="#" ><?php echo $booking->full_name;?></a></strong>
 
 <div class="hidden" id="inline_8">
-  <div class="post_title"><?php echo $booking->full_name;?></div><div class="post_name">phong-don</div>
-  <?php
+	  <div class="post_title"><?php echo $booking->full_name;?></div><div class="post_name">phong-don</div>
+	  <?php
 
-  $string = "?page=booking-room&action=delete&id={$booking->id}";
-  $trash_url = admin_url($string);
-  ?>
-  <div class="post_password"></div><div class="page_template">default</div>
-  <div class="tags_input" id="room_range_8"></div><div class="sticky"></div></div><div class="row-actions"><span class="edit"><a href="#" aria-label="Edit “Phòng đơn”">Edit</a> | </span><span class="inline hide-if-no-js">| </span>
+	  $string = "?page=booking-room&action=delete&id={$booking->id}";
+	  $trash_url = admin_url($string);
+	  ?>
+	  <div class="post_password"></div>
+	  <div class="page_template">default</div>
+	  <div class="tags_input" id="room_range_8"></div><div class="sticky"></div>
+</div>
+  <div class="row-actions">
+  	<span class="edit"><a href="#" aria-label=>Edit</a> | </span><span class="inline hide-if-no-js">| </span>
     <span class="trash"><a href="<?php echo $trash_url;?>" class="submitdelete" onclick="return confirm_delete()" >Delete</a> | </span>
-    <span class="view"><a href="#" rel="bookmark" aria-label="View ">View</a></span></div>
+    <span class="view"><a href="#" rel="bookmark" aria-label="View ">View</a></span>
+  </div>
   <td class="taxonomy-rate column-taxonomy-rate" data-colname="Rates"><?php echo $booking->phone;?> </td>
   <td class="taxonomy-room_range column-taxonomy-room_range" data-colname="Range"><?php echo $booking->email;?></td>
   <td class="date column-date" data-colname="Date">
@@ -148,16 +153,10 @@ Class bookingAdmin{
 			<thead>
 				<tr>
 					<td id="cb" class="manage-column column-cb check-column"><label class="screen-reader-text" for="cb-select-all-1">Select All</label><input id="cb-select-all-1" type="checkbox"></td>
-					<!-- <th scope="col" id="title" class="manage-column column-title column-primary desc">
-					<span>Full name</span>
-					</th>
-
-					<th scope="col" id="taxonomy-rate" class="manage-column ">Phone</th>
-					<th scope="col" id="taxonomy-room_range" class="manage-column column-taxonomy-room_range">Email</th><th scope="col" id="date" class="manage-column column-date sortable desc"><a href="<?php echo $this->order_url;?>"><span>Date</span><span class="sorting-indicator"></span></a></th> -->
 
 					<?php foreach($this->colums as $colum){
 						;
-						echo '<th scope="col" id="taxonomy-rate" class="manage-column ">'.$colum['label'].'</th>';
+						echo '<th scope="col" id="taxonomy-rate" class="manage-column '.$colum['class'].'">'.$colum['label'].'</th>';
 					}
 					?>
 
@@ -203,6 +202,13 @@ Class bookingAdmin{
 				?>
 			</div>
 	    </div>
-	</div><?php
+	</div>
+	<style type="text/css">
+		.column-status{
+			width: 95px;
+		}
+	</style>
+
+	<?php
 	}
 }
