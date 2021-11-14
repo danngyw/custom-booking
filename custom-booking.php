@@ -12,6 +12,7 @@ Text Domain: booking
 
 define( 'BOOKING_PATH', dirname( __FILE__ ) );
 define( 'BOOKING_URL', plugin_dir_url( __FILE__ ) );
+require_once('functions.php');
 require_once('booking-shortcodes.php');
 require_once(BOOKING_PATH.'/admin.php');
 Class CustomBooking{

@@ -11,7 +11,6 @@
 .room-item .short span{
 	display: inline-block;
 	margin-left: 5px;
-	width: 30%;
 	text-align: center;
 }
 .container{
@@ -26,7 +25,6 @@
 	overflow: hidden;
 	font-size: 15px;
 	display: inline-block;
-	float: left;
 }
 .room-item a{
 	font-size: 15px;
@@ -102,4 +100,7 @@ button:not(:hover):not(:active):not(.has-background){
 	height: 20px;
 	position: relative;
 	left: 15px;
+}
+.break-line{
+	margin-bottom: 30px;
 }

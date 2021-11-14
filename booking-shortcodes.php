@@ -1,67 +1,45 @@
 <?php
 
 
-function show_list_room(){
+function show_list_room($att){
     $args = array(
         'post_type'     => 'room',
         'post_status'   => 'publish',
     );
+    $layout = isset($att['layout']) ?$att['layout'] :'inline';
+    $line_css = $line_close= '';
+    if($layout == 'inline'){
+        $line_css = '<div class="row">';
+        $line_close = '</div>';
+    }
     $query  = new WP_Query($args);
     if($query->have_posts()){
-        echo '<div class="container"> <div class="row">';
+        echo '<div class="container">';
+        echo $line_css;
         while($query->have_posts()){
             $query->the_post();
             global $post;
-            $room_id = $post->ID;
-            $price      = get_post_meta($room_id,'price', true);
-            if(!$price){
-                $price = 0;
+            if($layout == 'inline'){
+                box_load_template('templates/inline.php','', $post);
+            } else{
+                box_load_template('templates/break-line.php','', $post);
             }
-            $ranges    = get_the_terms($room_id, 'room_range' );
-            $rate     = get_the_terms($room_id, 'rate' );
 
-            echo '<div class=" col-4 room-item">';
-            echo  '<a href="'.get_permalink().'" class="title-link">';
-            echo '<h3>'.get_the_title().'</h3>';
-            echo '</a>';
-            echo  '<a href="'.get_permalink().'" class="img-link">';
-            if(has_post_thumbnail()){
-                the_post_thumbnail();
-            }else{
-                echo '<img src="'.BOOKING_URL.'/assets/img/no-thumbnail.jpg" >';
-            }
-            echo '</a>';
-            echo '<div class="short">';
-                echo '<span class="room-price">'.$price.'($)</span>';
-                if(!is_wp_error($ranges) && !empty($ranges)){
-                    $range_string = join(', ', wp_list_pluck($ranges, 'name'));
-                    echo '<span class="room-range"> '.$range_string.' $(USD)</span>';
-                }
-                if(!is_wp_error($rate) && !empty($rate)){
-                    $rate_string = join(', ', wp_list_pluck($rate, 'name'));
-                    echo '<span class="room-type">  '.$rate_string.' stars</span>';
-                }
-                echo '<div class="room-excerpt">';
-                the_excerpt();
-                echo '</div>';
-
-            echo '</div>';
-            echo '</div>';
         }
-        echo '</div></div>';
+        echo $line_close;
+        echo '</div>';
     } else {
         echo 'No room found.';
     }
 }
 function shortcode_booking_room($atts){
-    $attributes = shortcode_atts( array(
+    $att = shortcode_atts( array(
         'title' => false,
-        'limit' => 4,
+        'layout' => '',
     ), $atts );
-
     ob_start();
 
-    show_list_room();
+    show_list_room($atts);
 
     return ob_get_clean();
 }
